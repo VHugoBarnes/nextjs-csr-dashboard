@@ -1,9 +1,18 @@
-import React from "react";
+import { Counter } from "@/components/Counter";
+import { Metadata } from "next";
 
-const Counter = () => {
+export const metadata: Metadata = {
+  title: "Counter",
+  description: "A simple counter"
+};
+
+const CounterPage = () => {
   return (
-    <div>Counter Page</div>
+    <div className="flex flex-col items-center justify-center w-full h-full">
+      <span>Productos del carrito</span>
+      <Counter />
+    </div>
   );
 };
 
-export default Counter;
+export default CounterPage;
