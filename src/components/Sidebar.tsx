@@ -42,8 +42,8 @@ export const Sidebar = () => {
           <span>
             <Image
               className="rounded-full w-8 h-8"
-              height={32}
-              width={32}
+              height={30}
+              width={30}
               src="https://media.licdn.com/dms/image/D4E03AQGlIai4z3Kbng/profile-displayphoto-shrink_400_400/0/1678137554592?e=1707955200&v=beta&t=3hbgAP5MmWiE8oAnq67BdrUrB5by19ac5U-WUPT15Dg"
               alt=""
             />
