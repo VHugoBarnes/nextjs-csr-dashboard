@@ -1,10 +1,7 @@
-import { PokemonCard } from "@/pokemons/PokemonCard";
+import { PokemonCard } from "@/components/PokemonCard";
 import { PokemonResponse, SimplePokemon } from "@/pokemons/interfaces";
-import Image from "next/image";
-import Link from "next/link";
-import { FaRegHeart } from "react-icons/fa";
 
-const getPokemons = async (limit = 20, offset = 20): Promise<SimplePokemon[]> => {
+const getPokemons = async (limit = 20, offset = 0): Promise<SimplePokemon[]> => {
   const data: PokemonResponse = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`).then((res) => res.json());
 
   const pokemons = data.results.map(pokemon => ({

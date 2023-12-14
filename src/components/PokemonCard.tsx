@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { SimplePokemon } from "./interfaces";
+import { SimplePokemon } from "../pokemons/interfaces";
 import { FaRegHeart } from "react-icons/fa";
 
 export const PokemonCard = ({ pokemon }: { pokemon: SimplePokemon }) => {
