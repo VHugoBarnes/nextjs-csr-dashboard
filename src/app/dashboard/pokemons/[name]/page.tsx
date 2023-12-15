@@ -1,20 +1,20 @@
-import { Pokemon } from "@/pokemons/interfaces";
+import { Pokemon, PokemonResponse } from "@/pokemons/interfaces";
 import { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
 interface Props {
-  params: { id: string };
+  params: { name: string };
 };
 
 export async function generateStaticParams() {
-  const staticNumbers = Array.from({ length: 151 }).map((v, i) => `${i + 1}`);
-  return staticNumbers.map(id => ({ id: id }));
+  const staticNames: PokemonResponse = await fetch("https://pokeapi.co/api/v2/pokemon?limit=151").then(res => res.json());
+  return staticNames.results.map(poke => ({ name: poke.name }));
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   try {
-    const { id, name } = await getPokemon(params.id);
+    const { id, name } = await getPokemon(params.name);
     return {
       title: `#${id} - ${name}`,
       description: `Page of ${name}`
@@ -27,10 +27,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 };
 
-const getPokemon = async (id: string): Promise<Pokemon> => {
+const getPokemon = async (name: string): Promise<Pokemon> => {
   try {
     const pokemon: Pokemon = await fetch(
-      `https://pokeapi.co/api/v2/pokemon/${id}`,
+      `https://pokeapi.co/api/v2/pokemon/${name}`,
       {
         next: {
           revalidate: 60 * 60 * 30 * 6
@@ -50,7 +50,7 @@ const getPokemon = async (id: string): Promise<Pokemon> => {
 };
 
 const PokemonPage = async ({ params }: Props) => {
-  const pokemon = await getPokemon(params.id);
+  const pokemon = await getPokemon(params.name);
   return (
     <div className="flex mt-5 flex-col items-center text-slate-800 p-2">
       <div className="relative flex flex-col items-center rounded-[20px] w-[700px] mx-auto bg-white bg-clip-border  shadow-lg  p-3">
