@@ -1,8 +1,15 @@
+import { WidgetsGrid } from "@/components/dashboard/WidgetsGrid";
 import React from "react";
 
 const page = () => {
   return (
-    <div>Main Page - Dashboard</div>
+    <div className="text-black p-2">
+      <h1 className="mt-2 text-3xl">Dashboard</h1>
+      <span className="text-xl">Información general</span>
+
+      <WidgetsGrid />
+
+    </div>
   );
 };
 
