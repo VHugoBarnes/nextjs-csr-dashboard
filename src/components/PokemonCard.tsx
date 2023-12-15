@@ -1,9 +1,14 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import { SimplePokemon } from "../pokemons/interfaces";
-import { FaRegHeart } from "react-icons/fa";
+import { FaRegHeart, FaHeart } from "react-icons/fa";
+import { useAppSelector } from "@/store";
 
 export const PokemonCard = ({ pokemon }: { pokemon: SimplePokemon }) => {
+  const isFavorite = useAppSelector(state => !!state.pokemons[pokemon.id]);
+
   return (
     <div key={pokemon.id} className="flex flex-col bg-neutral-800 w-40 justify-center items-center rounded-lg space-y-4">
       <Image
@@ -21,7 +26,9 @@ export const PokemonCard = ({ pokemon }: { pokemon: SimplePokemon }) => {
         More info
       </Link>
       <div className="bg-white w-full flex justify-center items-center py-2 rounded-b-lg">
-        <FaRegHeart className="text-pink-500 w-5 h-5" />
+        {
+          isFavorite ? (<FaHeart className="text-pink-500 w-5 h-5" />) : (<FaRegHeart className="text-pink-500 w-5 h-5" />)
+        }
       </div>
     </div>
   );
