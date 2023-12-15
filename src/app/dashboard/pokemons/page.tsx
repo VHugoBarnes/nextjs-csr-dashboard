@@ -1,6 +1,8 @@
 import { PokemonCard } from "@/components/PokemonCard";
 import { PokemonResponse, SimplePokemon } from "@/pokemons/interfaces";
 
+export const metadata = { title: "Pokemons list" };
+
 const getPokemons = async (limit = 20, offset = 0): Promise<SimplePokemon[]> => {
   const data: PokemonResponse = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`).then((res) => res.json());
 
