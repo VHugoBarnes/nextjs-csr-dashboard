@@ -17,7 +17,7 @@ export const PokemonCard = ({ pokemon }: { pokemon: SimplePokemon }) => {
       <p className="capitalize font-bold text-center text-neutral-200 px-4">
         {pokemon.name}
       </p>
-      <Link href={`/dashboard/pokemon/${pokemon.id}`} className="border border-white text-white rounded-full px-3 text-sm hover:scale-105 transition-all duration-200">
+      <Link href={`/dashboard/pokemons/${pokemon.name}`} className="border border-white text-white rounded-full px-3 text-sm hover:scale-105 transition-all duration-200">
         More info
       </Link>
       <div className="bg-white w-full flex justify-center items-center py-2 rounded-b-lg">
