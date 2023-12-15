@@ -15,7 +15,7 @@ const getPokemons = async (limit = 20, offset = 0): Promise<SimplePokemon[]> => 
 const page = async () => {
   const pokemons = await getPokemons(151);
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 p-2">
       <h1 className="text-4xl font-bold">
         Pokemons
       </h1>
