@@ -6,7 +6,7 @@ import React from "react";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 
 export const PokemonFavoriteButton = ({ pokemon }: { pokemon: SimplePokemon }) => {
-  const isFavorite = useAppSelector(state => !!state.pokemons[pokemon.id]);
+  const isFavorite = useAppSelector(state => !!state.pokemons.favorites[pokemon.id]);
   const dispatch = useAppDispatch();
   const [hover, setHover] = React.useState(false);
 
